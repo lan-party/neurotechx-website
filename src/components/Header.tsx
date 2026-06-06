@@ -83,6 +83,12 @@ export default function Header() {
             </header>
 
             <nav id={mobileMenuOpen ? styles.mobileNavLinks : styles.hidden}>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZyzhVdOLU8_oQ4NylHL8EFoKLIVmryGXA4u7HDsZpkTryvg/viewform" target="_blank" className={styles.joinButton}>
+                    Join Community
+                </a>
+                <Link href="/donate" className={styles.donateLink}>
+                    Donate
+                </Link>
                 {[
                     { name: 'About', href: '/about' },
                     { name: 'Community', href: '/community' },
