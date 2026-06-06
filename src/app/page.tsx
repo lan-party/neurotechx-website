@@ -275,7 +275,7 @@ export default function Home() {
             </div>
 
             {/* Row 3, Col 1: BALLADEER Dataset (New) */}
-            <div className={styles.card} style={{ gridColumn: 'span 2' }}>
+            <div className={styles.card}>
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 {/* Preview Image Area */}
                 <div style={{
@@ -340,7 +340,7 @@ export default function Home() {
             <div className={styles.card}>
               <div className={`${styles.cardVisual} ${styles.donate}`}>
                 <div style={{ position: 'absolute', inset: 0, opacity: 0.2, background: 'repeating-linear-gradient(45deg, #7f1d1d 0, #7f1d1d 10px, transparent 10px, transparent 20px)' }} />
-                <div style={{ padding: '1rem', border: '2px solid #ef4444', borderRadius: '50%', color: '#ef4444', fontWeight: 'bold', fontSize: '2rem' }}>♥</div>
+                <div style={{ padding: '15px 26px 15px 26px', border: '2px solid #ef4444', borderRadius: '50%', color: '#ef4444', fontWeight: 'bold', fontSize: '2rem' }}>♥</div>
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Support the Mission</h3>
