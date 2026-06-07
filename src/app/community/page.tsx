@@ -3,7 +3,7 @@ import { ExternalLink } from 'lucide-react';
 export default function CommunityPage() {
     return (
         <div className="container py-12">
-            <h1 className="text-4xl font-serif font-bold mb-6">Community & Chapters</h1>
+            <h1 className="text-4xl font-serif font-bold mb-6 mt-3">Community & Chapters</h1>
             <p className="text-lg text-muted-foreground block mb-8">
                 Join a local chapter or start your own.
             </p>
@@ -70,7 +70,7 @@ export default function CommunityPage() {
                 <div className="p-6 bg-muted rounded-lg">
                     <h2 className="text-2xl font-bold mb-4">Community Stories</h2>
                     <p className="mb-4 text-muted-foreground">Hear from our members about their journey in neurotechnology.</p>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                         <div className="aspect-video bg-black rounded overflow-hidden relative group">
                             <iframe
                                 src="https://www.youtube.com/embed/QEmz_ovwUd4"

@@ -152,7 +152,7 @@ export default async function ProjectsPage() {
                             </div>
                         </div>
                         <h3 className={styles.repoName}>
-                            <a href="https://github.com/thibaultdesurrel/riemannien_dimension_reduction" target="_blank">riemannien_dimension_reduction</a>
+                            <a href="https://github.com/thibaultdesurrel/riemannien_dimension_reduction" target="_blank" className={styles.smallRepoName} >riemannien_dimension_reduction</a>
                         </h3>
                         <p className={styles.description}>
                             Riemannian dimension reduction for covariance matrices. Essential for advanced BCI signal processing.

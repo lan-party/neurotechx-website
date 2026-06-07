@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function EducationPage() {
     return (
         <div className="container py-12">
-            <h1 className="text-4xl font-serif font-bold mb-6">Education & Data</h1>
+            <h1 className="text-4xl font-serif font-bold mb-6 mt-3">Education & Data</h1>
             <p className="text-lg text-muted-foreground mb-12">
                 Curated learning resources and open standards for the community.
             </p>
@@ -16,7 +16,7 @@ export default function EducationPage() {
                     <p className="text-lg text-muted-foreground mb-6">
                         The definitive beginner&apos;s guide to brain-computer interfaces and neurotechnology. Written by the community, for the community.
                     </p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                         <a href="https://neurotechx.com/primer" target="_blank" className="px-6 py-3 bg-foreground text-background rounded-full font-bold hover:opacity-90 transition-opacity">
                             Get the Book
                         </a>
