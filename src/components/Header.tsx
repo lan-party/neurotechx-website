@@ -63,7 +63,7 @@ export default function Header() {
                         <Link href="/donate" className={styles.donateLink}>
                             Donate
                         </Link>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZyzhVdOLU8_oQ4NylHL8EFoKLIVmryGXA4u7HDsZpkTryvg/viewform" target="_blank" className={styles.joinButton}>
+                        <a href="/join" className={styles.joinButton}>
                             Join Community
                         </a>
                         <nav className={styles.mobileNav} onClick={toggleNavButtonClick}>
@@ -83,7 +83,7 @@ export default function Header() {
             </header>
 
             <nav id={mobileMenuOpen ? styles.mobileNavLinks : styles.hidden}>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZyzhVdOLU8_oQ4NylHL8EFoKLIVmryGXA4u7HDsZpkTryvg/viewform" target="_blank" className={styles.joinButton}>
+                <a href="/join" className={styles.joinButton}>
                     Join Community
                 </a>
                 <Link href="/donate" className={styles.donateLink}>

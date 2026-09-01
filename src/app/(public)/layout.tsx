@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Aldrich } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 
 const aldrich = Aldrich({ weight: '400', subsets: ['latin'], variable: '--font-sans' })
 const inter = Inter({ subsets: ['latin'], variable: '--font-serif' })
