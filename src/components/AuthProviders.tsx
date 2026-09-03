@@ -11,7 +11,6 @@ export default function AuthProviders(
     { session, addUser, children }: 
     { session: Session | null, addUser: (email: string) => Promise<void>, children: React.ReactNode }
 ) {
-    const searchParams = useSearchParams();
 
     useEffect(() => {
         if(session && session.user?.email && !hasCookie('firstLogin')){
@@ -25,7 +24,7 @@ export default function AuthProviders(
     
     return (
         <SessionProvider session={session}>
-            {session || searchParams.get('key') ? children : <LoginMessage />}
+            {session ? children : <LoginMessage />}
         </SessionProvider>
     )
 }

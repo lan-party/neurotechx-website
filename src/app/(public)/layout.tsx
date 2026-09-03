@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Providers from '@/components/Providers'
-import { addUser } from '@/lib/db'
 import { getServerSession } from 'next-auth'
 
 export default async function RootLayout({
@@ -28,7 +27,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${aldrich.variable} ${inter.variable} font-sans`}>
         <div className="relative flex min-h-screen flex-col">
-          <Providers>
+          <Providers session={session}>
             <Header />
             <main className="flex-1">
               {children}
