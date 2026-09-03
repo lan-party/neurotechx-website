@@ -5,10 +5,16 @@ import { usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Header.module.css';
+import { useSession } from 'next-auth/react';
 
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    let { data: session } = useSession();
+    if(session != null && 'value' in session){
+        session = JSON.parse(session?.value as string);
+    }
 
     const toggleNavButtonClick = () => {
         setMobileMenuOpen(!mobileMenuOpen);
@@ -63,9 +69,15 @@ export default function Header() {
                         <Link href="/donate" className={styles.donateLink}>
                             Donate
                         </Link>
-                        <a href="/join" className={styles.joinButton}>
-                            Join Community
-                        </a>
+                        { session && 'user' in session ?
+                            <a href="/dashboard" className={styles.joinButton}>
+                                Dashboard
+                            </a> :
+                            <a href="/join" className={styles.joinButton}>
+                                Join Community
+                            </a>
+                        }
+                        
                         <nav className={styles.mobileNav} onClick={toggleNavButtonClick}>
                             <button id={styles.toggleNavButton}>
                                 { 
@@ -83,9 +95,14 @@ export default function Header() {
             </header>
 
             <nav id={mobileMenuOpen ? styles.mobileNavLinks : styles.hidden}>
-                <a href="/join" className={styles.joinButton}>
-                    Join Community
-                </a>
+                { session && 'user' in session ?
+                        <a href="/dashboard" className={styles.joinButton}>
+                            Dashboard
+                        </a> :
+                        <a href="/join" className={styles.joinButton}>
+                            Join Community
+                        </a>
+                    }
                 <Link href="/donate" className={styles.donateLink}>
                     Donate
                 </Link>

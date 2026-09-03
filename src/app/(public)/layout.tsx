@@ -12,21 +12,29 @@ export const metadata: Metadata = {
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Providers from '@/components/Providers'
+import { addUser } from '@/lib/db'
+import { getServerSession } from 'next-auth'
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+    const session = await getServerSession();
+
   return (
     <html lang="en">
       <body className={`${aldrich.variable} ${inter.variable} font-sans`}>
         <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
+          <Providers>
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </Providers>
         </div>
       </body>
     </html>

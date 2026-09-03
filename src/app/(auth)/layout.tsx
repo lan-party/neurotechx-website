@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Providers from '@/components/Providers'
+import AuthProviders from '@/components/AuthProviders'
 import { getServerSession } from 'next-auth'
 import { addUser } from '@/lib/db'
+import DashboardHeader from '@/components/DashboardHeader'
 
 export default async function RootLayout({
   children,
@@ -28,12 +29,14 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${aldrich.variable} ${inter.variable} font-sans`}>
         <div className="relative flex min-h-screen flex-col">
-          <main className="flex-1">
-            <Providers session={session} addUser={addUser}>
-              {children}
-            </Providers>
-          </main>
-          <Footer />
+          
+            <AuthProviders session={session} addUser={addUser}>
+              <DashboardHeader />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </AuthProviders>
         </div>
       </body>
     </html>

@@ -7,7 +7,7 @@ import { hasCookie, setCookie } from "cookies-next"
 import { Usable, use, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 
-export default function Providers(
+export default function AuthProviders(
     { session, addUser, children }: 
     { session: Session | null, addUser: (email: string) => Promise<void>, children: React.ReactNode }
 ) {
@@ -25,7 +25,7 @@ export default function Providers(
     
     return (
         <SessionProvider session={session}>
-            {children}
+            {session || searchParams.get('key') ? children : <LoginMessage />}
         </SessionProvider>
     )
 }
