@@ -1,5 +1,4 @@
 'use server';
-import { readFileSync } from "fs";
 import nodemailer from "nodemailer";
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
@@ -14,11 +13,23 @@ const options: SMTPTransport.Options = {
   },
 };
 
-function loadTemplate(fileName: string, placeholderValues: Array<[string, string]>){
-    let content = readFileSync(process.cwd() + `/src/lib/templates/${fileName}`, 'utf-8') as string;
+const templates = {
 
-    for(const placeholderValue of placeholderValues){
-        content = content.replaceAll(placeholderValue[0], placeholderValue[1]);
+    'welcome': 
+    `<html>
+        <p>Hello, {USER_EMAIL}! Thank you for joining the NeuroTechX online community. Below you'll find some places to get started.</p>
+
+        <a href="https://neurotechx.slack.com">Join Slack</a>
+    </html>`
+
+};
+
+
+function loadTemplate(templateName: string, placeholderValues: object){
+    let content = templates[templateName as keyof typeof templates];
+
+    for (const [placeholder, value] of Object.entries(placeholderValues)) {
+        content = content.replaceAll(placeholder, value);
     }
 
     return content;
@@ -30,7 +41,7 @@ export async function sendWelcomeEmail(email: string){
 
         const transporter = nodemailer.createTransport(options);
 
-        const htmlContent = loadTemplate("welcome.html", [['{USER_EMAIL}', email]]);
+        const htmlContent = loadTemplate("welcome", {'{USER_EMAIL}': email});
 
         await transporter.sendMail({
             from: `"NeuroTechX" ${process.env.SMTP_USER}`,
