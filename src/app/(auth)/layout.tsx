@@ -15,6 +15,7 @@ import Footer from '@/components/Footer';
 import AuthProviders from '@/components/AuthProviders'
 import { getServerSession } from 'next-auth'
 import { addUser } from '@/lib/db'
+import { sendWelcomeEmail } from '@/lib/email'
 import DashboardHeader from '@/components/DashboardHeader'
 
 export default async function RootLayout({
@@ -30,7 +31,7 @@ export default async function RootLayout({
       <body className={`${aldrich.variable} ${inter.variable} font-sans`}>
         <div className="relative flex min-h-screen flex-col">
           
-            <AuthProviders session={session} addUser={addUser}>
+            <AuthProviders session={session} addUser={addUser} sendWelcomeEmai={sendWelcomeEmail}>
               <DashboardHeader />
               <main className="flex-1">
                 {children}

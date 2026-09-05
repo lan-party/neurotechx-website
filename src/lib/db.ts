@@ -1,5 +1,5 @@
 'use server';
-import mysql from  'mysql2/promise';
+import mysql, { ResultSetHeader } from  'mysql2/promise';
 // import { getServerSession } from 'next-auth';
 
 export default async function getConnection(){
@@ -15,6 +15,7 @@ export async function addUser(email: string){
   'use server';
   const conn = await getConnection();
 
-  await conn.execute('INSERT INTO `users` (`email`) VALUES (?)', [email]);
+  const [resp] = await conn.execute<ResultSetHeader>('INSERT INTO `users` (`email`) VALUES (?)', [email]);
 
+  return resp.affectedRows;
 }
