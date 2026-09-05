@@ -15,7 +15,7 @@ const options: SMTPTransport.Options = {
 };
 
 function loadTemplate(fileName: string, placeholderValues: Array<[string, string]>){
-    let content = readFileSync(`src/lib/templates/${fileName}`, 'utf-8') as string;
+    let content = readFileSync(process.cwd() + `/src/lib/templates/${fileName}`, 'utf-8') as string;
 
     for(const placeholderValue of placeholderValues){
         content = content.replaceAll(placeholderValue[0], placeholderValue[1]);
